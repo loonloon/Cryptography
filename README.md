@@ -2,6 +2,7 @@
 
 Types of Cryptography
 1. Private key Encryption (Symmetric Encryption)
-2. Public-key encryption (Asymmetric Encryption)
+https://en.wikipedia.org/wiki/Symmetric-key_algorithm
 
-![alt text](http://www.itgstextbook.com/chapter5-security/secret-key-encryption.png)
+2. Public-key encryption (Asymmetric Encryption)
+![alt text](https://en.wikipedia.org/wiki/Public-key_cryptography#/media/File:Public_key_encryption.svg)
