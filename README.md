@@ -34,4 +34,6 @@ For example, Banks A and B often settle thousands of transactions per day. It wo
 <b>State Channels</b> <br />
 A State Channel is in essence a two-way discussion channel between users, or between a user and a service (a machine).
 
+![statechannel](https://user-images.githubusercontent.com/5309726/42352030-ac42c046-80ea-11e8-80ce-c03bda55a704.png)
+
 <b>InterPlanetary File System (IPFS)</b>
