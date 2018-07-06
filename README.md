@@ -9,6 +9,11 @@ https://en.wikipedia.org/wiki/Public-key_cryptography
 <b>Intel Software Guard Extensions (Intel SGX) </b><br />
 https://software.intel.com/sgx/code-samples
 
+<b>Hashing Algorithm</b><br />
+Cryptographic hashing, or more commonly referred to as “hashing” takes an input (or message) and produces an output (called a digest) with a fixed number of alphanumeric characters. 
+
+For example, every time you input the word “Fox” into a hash function it produces the same digest. This process is deterministic because the output is the same every single time. Hashing is known as a “one-way cryptographic function.” This means that given any random digest, there is no feasible way to figure out the input. If we were only given the hashed digest of “Fox” it would be almost impossible to determine that the input was “Fox.” You would have to randomly try different inputs until coming across the correct digest.
+
 <b>On-Chain vs Off-Chain transactions</b>
 1. On-Chain: transactions reflected on the public ledger, visible to all participants on the blockchain network.
 2. Off-Chain: transactions that aren't processed on the main chain (usually achieved through state channels).
