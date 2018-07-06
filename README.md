@@ -2,7 +2,7 @@
 
 #### Types of Cryptography ####
 1. Private key Encryption ([Symmetric Encryption](https://en.wikipedia.org/wiki/Symmetric-key_algorithm))
-2. Public-key Encryption ([Asymmetric Encryption](https://en.wikipedia.org/wiki/Public-key_cryptography)) 
+2. Public key Encryption ([Asymmetric Encryption](https://en.wikipedia.org/wiki/Public-key_cryptography)) 
 
 #### Intel Software Guard Extensions ([Intel SGX](https://software.intel.com/sgx/code-samples))  
 
@@ -12,6 +12,22 @@ Cryptographic hashing, or more commonly referred to as "hashing" takes an input 
 For example, every time you input the word "Fox" into a hash function it produces the same digest. This process is ***deterministic*** because the output is the same every single time. Hashing is known as a ***one-way cryptographic function.*** This means that given any random digest, there is no feasible way to figure out the input. If we were only given the hashed digest of "Fox" it would be almost impossible to determine that the input was "Fox." You would have to randomly try different inputs until coming across the correct digest.
 
 ![hashing](https://user-images.githubusercontent.com/5309726/42371419-09ea2dae-8142-11e8-86c2-086b22c4ee9c.jpeg)
+
+#### Secure Hashing Algorithm (SHA) ####. 
+SHA-256 will take any given input of data, convert it into 256 bits (256 zeros and ones), and then output those 256 bits into the format of 64 hexadecimal characters. 
+
+The hexadecimal system uses a combination of 16 different characters (0123456789ABCDEF). Each hexadecimal characters represents 4 bits, which means that 64 hexadecimal characters represent 256 bits. There are 8 bits per byte, which means that 256 bits is equal to 32 bytes.
+
+Input: My name is Ben Stolman. Output in 256 Bits:
+`1111110110111110110100100011000110001010101011111000111000101100111011001111100100110101100000100010101011011011101000111100010100010010110000100001100111011011101001000101010100101111111110100110101011101111111110001110010110110001110001100011101010100001`
+
+Converted to hex format:
+`FDBED2318AAF8E2CECF935822ADBA3C512C219DBA4552FFA6AEFF8E5B1C63AA1`
+
+The output is 64 characters, but if you view it like this:
+`(FD) (BE) (D2) (31) (8A) (AF) (8E) (2C) (EC) (F9) (35) (82) (2A) (DB) (A3) (C5) (12) (C2) (19) (DB) (A4) (55) (2F) (FA) (6A) (EF) (F8) (E5) (B1) (C6) (3A) (A1)`
+
+32 separate hexadecimal numbers (or 32 bytes) each paired in parenthesis representing 8 bits in the hash.
 
 #### On-Chain vs Off-Chain transactions ####
 On-Chain      | Off-Chain
