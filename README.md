@@ -1,14 +1,10 @@
 # Cryptography
 
 #### Types of Cryptography ####
-1. Private key Encryption (Symmetric Encryption) <br />
-https://en.wikipedia.org/wiki/Symmetric-key_algorithm
+1. Private key Encryption ([Symmetric Encryption](https://en.wikipedia.org/wiki/Symmetric-key_algorithm))
+2. Public-key Encryption ([Asymmetric Encryption](https://en.wikipedia.org/wiki/Public-key_cryptography)) 
 
-2. Public-key Encryption (Asymmetric Encryption)  <br />
-https://en.wikipedia.org/wiki/Public-key_cryptography
-
-#### Intel Software Guard Extensions (Intel SGX) ####
-https://software.intel.com/sgx/code-samples
+#### Intel Software Guard Extensions ([Intel SGX](https://software.intel.com/sgx/code-samples))  
 
 #### Hashing Algorithm ####
 Cryptographic hashing, or more commonly referred to as "hashing" takes an input (or ***message***) and produces an output (called a ***digest***) with a fixed number of alphanumeric characters. 
