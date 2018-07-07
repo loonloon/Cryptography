@@ -75,4 +75,16 @@ But the mechanism ends up not mattering very much, because (going back to the pr
 
 The details of these "subtleties" aren't especially important.  What it all ultimately breaks down to is that ***participants open the channel by setting up a "judge"*** smart contract, ***sign promises to each other*** which the judge can enforce and adjudicate if necessary, and then ***close the channel by agreeing*** amongst themselves so that the judge's adjudication isn't needed.  As long as the "judge" mechanism can be assumed to be reliable, these promises can be counted as instant transfers, with the judge only appealed to in exceptional circumstances, such as when one party disappears.
 
+#### Atomic Swap ####
+Atomic swap is a smart contract technology that enables exchange of one cryptocurrency for another without using centralized intermediaries, such as exchanges. 
+
+It can take place directly between blockchains of different cryptocurrencies or they can be conducted off-chain, away from the main blockchain. They first came into prominence in September 2017, when an atomic swap between Decred and Litecoin was conducted. 
+
+#### Example: ####
+Molly and Steve wanted to swap currencies.  Molly has 57 LTC, but she wants to own 1 BTC to know how it feels.  Turns out, Steve has 1 BTC and he wants 57 LTC, so Molly and Steve decide to make the trade.  But neither wants to send the funds to the other first, out of fear that s/he might be cheated.  They also don’t want to go through an escrow service (another example of a trusted, third-party intermediary) to execute the trade for them.
+
+Luckily, they can use atomic swaps for this.  With an atomic swap, Molly and Steve could conduct the transaction without having to go through a third party, like Binance or an escrow service, and without having to worry about being screwed over by the other.
+
+![atomic swap](https://user-images.githubusercontent.com/5309726/42407529-e3aef142-81f0-11e8-9cc3-1b486602a1d8.jpg)
+
 #### InterPlanetary File System (IPFS) ####
