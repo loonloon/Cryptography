@@ -97,3 +97,28 @@ Both Alice and Bob unlock their respective funds using their respective numbers.
 ![atomic swap](https://user-images.githubusercontent.com/5309726/42407533-22ded7b0-81f1-11e8-8e12-be582eb70688.jpg)
 
 #### InterPlanetary File System (IPFS) ####
+
+#### Token Types ####
+Payment       | Utility       | Asset
+------------- | ------------- | -------------
+Bitcoin, Ether | Pre-paid user fee | Equity tokens, deriviatives, etc.
+
+#### Payment Tokens ####
+* Means of payment, also according to AML.
+  * No security.
+  * No banking activity.
+* Full AML, KYC, new requirement to become a member of a self regulatory organisation.
+
+#### Utility Tokens ####
+* No security, unless investment instrument.
+* No means of payment, if
+  * Payment is ancillary function to the utility.
+  * Blockchain is not used for financial purposes.
+* No AML provisions applicable for pure utility tokens.
+
+#### Asset Tokens ####
+* Security.
+* Prosectus necessary.
+  * No banking activity.
+  * No means of payment.
+* No AML provisions applicable in principle (except for shares of collective investment scheme and bearer shares)
