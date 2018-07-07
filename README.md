@@ -13,7 +13,7 @@ For example, every time you input the word "Fox" into a hash function it produce
 
 ![hashing](https://user-images.githubusercontent.com/5309726/42371419-09ea2dae-8142-11e8-86c2-086b22c4ee9c.jpeg)
 
-#### Secure Hashing Algorithm (SHA) ####. 
+#### Secure Hashing Algorithm (SHA) ####
 SHA-256 will take any given input of data, convert it into 256 bits (256 zeros and ones), and then output those 256 bits into the format of 64 hexadecimal characters. 
 
 The hexadecimal system uses a combination of 16 different characters (0123456789ABCDEF). Each hexadecimal characters represents 4 bits, which means that 64 hexadecimal characters represent 256 bits. There are 8 bits per byte, which means that 256 bits is equal to 32 bytes.
@@ -81,9 +81,9 @@ Atomic swap is a smart contract technology that enables exchange of one cryptocu
 It can take place directly between blockchains of different cryptocurrencies or they can be conducted off-chain, away from the main blockchain. They first came into prominence in September 2017, when an atomic swap between Decred and Litecoin was conducted. 
 
 #### Problem ####
-Not all cryptocurrency exchanges support all coins. As such, a trader wishing to exchange her coin for another one that is not supported on the current exchange may need to migrate accounts or make several conversions between intermediate coins to accomplish her goal. There is also an associated counterparty risk, if the trader wishes to exchange her coins with another trader.  
+Not all cryptocurrency exchanges support all coins. As such, a trader wishing to exchange her coin for another one that is not supported on the current exchange may need to migrate accounts or make several conversions between intermediate coins to accomplish her goal. There is also an associated counterparty risk, if the trader wishes to exchange her coins with another trader. Atomic swaps solve this problem through the use of ***Hash Timelock Contracts (HTLC)*** 
 
-Atomic swaps solve this problem through the use of ***Hash Timelock Contracts (HTLC)***. As its name denotes, HTLC is a time-bound smart contract between parties that involves the generation of a cryptographic hash function, which can be verified between them
+HTLC is a time-bound smart contract between parties that involves the generation of a cryptographic hash function, which can be verified between them
 
 #### Example: ####
 Molly and Steve wanted to swap currencies.  Molly has 57 LTC, but she wants to own 1 BTC to know how it feels.  Turns out, Steve has 1 BTC and he wants 57 LTC, so Molly and Steve decide to make the trade.  But neither wants to send the funds to the other first, out of fear that s/he might be cheated.  They also don’t want to go through an escrow service (another example of a trusted, third-party intermediary) to execute the trade for them.
