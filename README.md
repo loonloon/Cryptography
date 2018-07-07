@@ -85,6 +85,6 @@ Molly and Steve wanted to swap currencies.  Molly has 57 LTC, but she wants to o
 
 Luckily, they can use atomic swaps for this.  With an atomic swap, Molly and Steve could conduct the transaction without having to go through a third party, like Binance or an escrow service, and without having to worry about being screwed over by the other.
 
-![atomic swap](https://user-images.githubusercontent.com/5309726/42407529-e3aef142-81f0-11e8-9cc3-1b486602a1d8.jpg)
+![atomic swap](https://user-images.githubusercontent.com/5309726/42407533-22ded7b0-81f1-11e8-8e12-be582eb70688.jpg)
 
 #### InterPlanetary File System (IPFS) ####
