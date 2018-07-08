@@ -108,6 +108,14 @@ Correlation with the court system. Let’s look at the court hierarchy in the UK
 
 ![plasma_02](https://user-images.githubusercontent.com/5309726/42416511-106bb672-82a3-11e8-907e-80218bb59aee.jpg)
 
+In this case, the Supreme Court is the root chain, it lays down the law of the land. The Supreme court has its child chains (Criminal and Civil) and each of them has their own child chains.
+
+So, if one were to bring up a civil case to the court, they can’t directly go to the Supreme court (of course this depends on how high profile the case is).
+
+The applicant will first deal with the county courts. If they are not happy with the decision, then they can go up in the chain one at a time before finally appealing in the supreme court.
+
+That is pretty much how the idea of plasma and nested blockchains will work, with the root chain being the supreme court with multiple child chains under it.
+
 #### Atomic Swap ####
 Atomic swap is a smart contract technology that enables exchange of one cryptocurrency for another without using centralized intermediaries, such as exchanges. 
 
