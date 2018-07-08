@@ -75,6 +75,39 @@ But the mechanism ends up not mattering very much, because (going back to the pr
 
 The details of these "subtleties" aren't especially important.  What it all ultimately breaks down to is that ***participants open the channel by setting up a "judge"*** smart contract, ***sign promises to each other*** which the judge can enforce and adjudicate if necessary, and then ***close the channel by agreeing*** amongst themselves so that the judge's adjudication isn't needed.  As long as the "judge" mechanism can be assumed to be reliable, these promises can be counted as instant transfers, with the judge only appealed to in exceptional circumstances, such as when one party disappears.
 
+#### Plasma Chain (Blockchain inside Blockchain) ####
+[Plasma](https://plasma.io/) is, in essence, blockchains built on top of blockchains. It is a series of contracts that run on top of the root chain (eg. the main ethereum blockchain).
+
+If one were to envision the architecture and the structure, then think of the main blockchain and the plasma blockchains as a tree. The main blockchain is the root while the plasma chain aka child blockchains are the branches.
+
+![plasma_01](https://user-images.githubusercontent.com/5309726/42416470-a40e293e-82a1-11e8-84ba-6846814f30a3.png)
+
+The root chain is like the universal absolute ground truth, while the child chains work around it doing their own computations and periodically feeding state information to the root chain.
+
+The root chain comes into play only when there is a dispute that needs to be settled in the child chain, otherwise, it doesn’t involve itself with anything going on in the child chain and this point is the core underlying philosophy behind it. If the root chain is going to be the ground truth, then it must remain as devoid of activity and calculations as possible.
+
+The root chains and the child chains will form a set of “nested blockchains.” To understand how a “nested” system works, it may be useful to take the example of nested loops. The reader maybe familiar with the concept.
+
+This is how nested loops work:
+```
+for (int i = 1; i < 5; i++)
+{
+   for (int j = 1; j < 5; j++)
+   {
+      //condition
+   }
+    //condition
+}
+````
+
+Instead of using just one loop to execute the entire condition, we used another loop inside the main loop and split up the condition. The inner loop does a calculation and returns a value to the main loop. This makes computation a lot less complicated.
+
+That is in essence how the nested blockchains operate. Another interesting way to understand this and especially to know how dispute resolution in plasma works, it may make sense to think of the court system.
+
+Correlation with the court system. Let’s look at the court hierarchy in the UK.
+
+![plasma_02](https://user-images.githubusercontent.com/5309726/42416511-106bb672-82a3-11e8-907e-80218bb59aee.jpg)
+
 #### Atomic Swap ####
 Atomic swap is a smart contract technology that enables exchange of one cryptocurrency for another without using centralized intermediaries, such as exchanges. 
 
