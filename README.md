@@ -34,7 +34,7 @@ Two types of record-keeping models are popular in today’s blockchain networks:
 1. Unspent Transaction Output Model, is employed by Bitcoin.
 2. Account/Balance Model, is employed by Ethereum.
 
-#### UTXO Example ####
+#### UTXO Model Example ####
 You create a brand new wallet and, in time, it receives three amounts of 0.01, 0.2 and 3 BTC as follows:
 1. You send 3 BTC to an address associated with the wallet.
 2. Two payments are made to another address by Alice.
@@ -62,6 +62,9 @@ The 0.05 BTC difference (0.2 BTC input minus 0.15 BTC output) is called ***"chan
 Each of the three outputs that are "waiting to be spent", is locked to its receiving addresses until such time as one or more of them are selected as input(s) to a new spend transaction.
 
 Behind the scenes, different wallet clients apply different logic rules when selecting UTXOs as inputs to new transactions.
+
+#### Account/Balance Model ####
+https://medium.com/@sunflora98/utxo-vs-account-balance-model-5e6470f4e0cf
 
 #### On-Chain vs Off-Chain transactions ####
 On-Chain      | Off-Chain
