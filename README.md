@@ -51,6 +51,8 @@ So what’s this ***"unspent output"*** you are seeing? It means from the three 
 
 After that, you send 0.15 BTC to Bob. The wallet selects a spend candidate from amongst the three existing "outputs" contained in the wallet. So, it chooses (for various reasons that are not important now) the 0.2 BTC output. The wallet will unlock the 0.2 BTC output and use the whole amount of 0.2 BTC as an ***input*** to your new 0.15 BTC transaction. The 0.2 BTC output is "spent" in the process.
 
+![utox_03](https://user-images.githubusercontent.com/5309726/42436459-9459848e-838c-11e8-8015-f7ec35d59ebb.png)
+
 The spend transaction your wallet creates will send 0.15 BTC to Bob’s address – where it will reside in his wallet as an output - waiting eventually to be spent.
 
 The 0.05 BTC difference (0.2 BTC input minus 0.15 BTC output) is called ***"change"*** and the transaction will send this back to your wallet via a newly created address. The 0.05 BTC change amount will reside in your wallet as a new output – waiting eventually to be spent. So, now, a virtual peek inside your wallet reveals the following:
