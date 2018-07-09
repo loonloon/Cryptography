@@ -59,6 +59,10 @@ The 0.05 BTC difference (0.2 BTC input minus 0.15 BTC output) is called ***"chan
 
 ![utox_04](https://user-images.githubusercontent.com/5309726/42436160-a28748f8-838b-11e8-8448-2051135f9eb6.png)
 
+Each of the three outputs that are "waiting to be spent", is locked to its receiving addresses until such time as one or more of them are selected as input(s) to a new spend transaction.
+
+Behind the scenes, different wallet clients apply different logic rules when selecting UTXOs as inputs to new transactions.
+
 #### On-Chain vs Off-Chain transactions ####
 On-Chain      | Off-Chain
 ------------- | -------------
