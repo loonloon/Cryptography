@@ -29,6 +29,34 @@ The output is 64 characters, but if you view it like this:
 
 32 separate hexadecimal numbers (or 32 bytes) each paired in parenthesis representing 8 bits in the hash.
 
+#### Unspent Transaction Output (UTXO)and Account/Balance Model ####
+Two types of record-keeping models are popular in today’s blockchain networks:
+1. Unspent Transaction Output Model, is employed by Bitcoin.
+2. Account/Balance Model, is employed by Ethereum.
+
+#### UTXO Example ####
+You create a brand new wallet and, in time, it receives three amounts of 0.01, 0.2 and 3 BTC as follows:
+1. You send 3 BTC to an address associated with the wallet.
+2. Two payments are made to another address by Alice.
+
+![utox_01](https://user-images.githubusercontent.com/5309726/42434730-cbd6fe24-8386-11e8-8e55-9cf31fb95a63.png)
+
+The wallet reports a balance of 3.21 BTC, yet if you were to virtually peek inside the wallet, you would see three distinct amounts still grouped together by their originating transactions: 0.01, 0.2 and 3 BTC.
+
+![utox_02](https://user-images.githubusercontent.com/5309726/42434849-2a78140e-8387-11e8-9ef6-b0d61e81073d.png)
+
+The received bitcoin amounts don’t mix but remain separated as the exact amounts sent to the wallet. The three amounts in the example above are called the outputs of their originating transactions. Bitcoin wallets always keep outputs separate and distinct.
+
+So what’s this ***"unspent output"*** you are seeing? It means from the three transactions that were made, your addresses were the output addresses of the transactions and you have not used those bitcoins (or outputs) in other transactions.
+
+After that, you send 0.15 BTC to Bob. The wallet selects a spend candidate from amongst the three existing "outputs" contained in the wallet. So, it chooses (for various reasons that are not important now) the 0.2 BTC output. The wallet will unlock the 0.2 BTC output and use the whole amount of 0.2 BTC as an ***input*** to your new 0.15 BTC transaction. The 0.2 BTC output is "spent" in the process.
+
+The spend transaction your wallet creates will send 0.15 BTC to Bob’s address – where it will reside in his wallet as an output - waiting eventually to be spent.
+
+The 0.05 BTC difference (0.2 BTC input minus 0.15 BTC output) is called ***"change"*** and the transaction will send this back to your wallet via a newly created address. The 0.05 BTC change amount will reside in your wallet as a new output – waiting eventually to be spent. So, now, a virtual peek inside your wallet reveals the following:
+
+![utox_04](https://user-images.githubusercontent.com/5309726/42436160-a28748f8-838b-11e8-8448-2051135f9eb6.png)
+
 #### On-Chain vs Off-Chain transactions ####
 On-Chain      | Off-Chain
 ------------- | -------------
@@ -60,7 +88,7 @@ The basic components of a state channel are very simple: (https://www.jeffcolema
 * Participants update the state amongst themselves by constructing and signing transactions that could be submitted to the blockchain, but instead are merely held onto for now. Each new update "trumps" previous updates.
 * Finally, participants submit the state back to the blockchain, which closes the state channel and unlocks the state again (usually in a different configuration than it started with).
 
-![statechannel](https://user-images.githubusercontent.com/5309726/42352030-ac42c046-80ea-11e8-80ce-c03bda55a704.png)
+![state_channel](https://user-images.githubusercontent.com/5309726/42436258-fd485cc8-838b-11e8-801d-eb7f1b61ad4d.png)
 
 #### Example: ####
 In order for state channels to work, participants have to be assured that they <em>could</em> publish the current state of the channel to the blockchain at any time.  This results in some important limitations, such as the fact that ***someone has to stay online*** to protect each individual party's interests until the channel is closed.
