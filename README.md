@@ -63,6 +63,14 @@ Each of the three outputs that are "waiting to be spent", is locked to its recei
 
 Behind the scenes, different wallet clients apply different logic rules when selecting UTXOs as inputs to new transactions.
 
+#### The benefits of UTXOs are: ####
+
+#### Higher degree of privacy ####
+Even Bitcoin is not a completely anonymous system, but UTXO provides a higher level of privacy, as long as the users use new addresses for each transaction (by using HD wallet?). If there is a need for enhanced privacy, more complex schemes, such as ring signatures, can be considered.
+
+#### Potential scalability paradigms ####
+Since it is possible to process multiple UTXOs at the same time, it enables parallel transactions and encourages scalability innovation.
+
 #### Account/Balance Model ####
 https://medium.com/@sunflora98/utxo-vs-account-balance-model-5e6470f4e0cf
 
