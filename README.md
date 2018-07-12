@@ -29,10 +29,23 @@ The output is 64 characters, but if you view it like this:
 
 32 separate hexadecimal numbers (or 32 bytes) each paired in parenthesis representing 8 bits in the hash.
 
+#### Permissioned vs Permissionless Blockchain ####
+#### Permissioned ####
+Sometimes referred to as “private” blockchains, you are required to have some sort of permission to access any or parts of that blockchain. There are a multitude of variants and hybrid permissioned/permissionless blockchains that exist. For example a blockchain may be public to read the information but require permission to access or transact on their network.
+
+Ripple, as an example, is a hybrid permissioned blockchain whereby they, as a central authority, act as the transaction validators and build their own nodes throughout the world, even though you may transact using their XRP token without permission.
+
+Other permissioned blockchains may be totally in house (highly permissioned), unable to be accessed or read outside of the authority who controls it.
+
+#### Permissionless ####
+There is no barrier to entry to use it. Anyone can run a node, run mining software/hardware, access a wallet and write data onto and transact within the blockchain (as long as they follow the rules of the bitcoin blockchain). There is no way to censor anyone, ever, on the permissionless bitcoin blockchain.
+
 #### Unspent Transaction Output (UTXO)and Account/Balance Model ####
 Two types of record-keeping models are popular in today’s blockchain networks:
-1. Unspent Transaction Output Model, is employed by Bitcoin.
-2. Account/Balance Model, is employed by Ethereum.
+
+Unspent Transaction Output Model | Account/Balance Model
+-------------------------------- | ----------------------
+employed by Bitcoin. | employed by Ethereum.
 
 #### UTXO Model Example ####
 You create a brand new wallet and, in time, it receives three amounts of 0.01, 0.2 and 3 BTC as follows:
