@@ -76,7 +76,7 @@ Each of the three outputs that are "waiting to be spent", is locked to its recei
 
 Behind the scenes, different wallet clients apply different logic rules when selecting UTXOs as inputs to new transactions.
 
-#### The benefits of UTXOs are: ####
+#### The benefits of UTXOs Model are: ####
 
 #### Higher degree of privacy ####
 Even Bitcoin is not a completely anonymous system, but UTXO provides a higher level of privacy, as long as the users use new addresses for each transaction (by using HD wallet?). If there is a need for enhanced privacy, more complex schemes, such as ring signatures, can be considered.
@@ -85,7 +85,16 @@ Even Bitcoin is not a completely anonymous system, but UTXO provides a higher le
 Since it is possible to process multiple UTXOs at the same time, it enables parallel transactions and encourages scalability innovation.
 
 #### Account/Balance Model ####
-https://medium.com/@sunflora98/utxo-vs-account-balance-model-5e6470f4e0cf
+It uses an architecture relying on global state storage of accounts, balances, code, and storage. The balances of user accounts are kept as a global state.
+
+It’s a more intuitive approach(直观的方法) for a lay user(非专业用户). You have an account, and it has a balance. Simply, a Tx is valid if your balance has sufficient funds. With a transaction, there is a debit and corresponding credit to the state. In this regard, it is analogous to a bank account without overdrafts.
+
+#### The benefits of Account/Balance Model are: ####
+#### Simplicity ####
+Ethereum opted for a more intuitive model for the benefit of developers of complex smart contracts, especially those that require state information or involve multiple parties. An example is a smart contract that keeps track of states to perform different tasks based on them. UTXO’s stateless model would force transactions to include state information, and this unnecessarily complicates the design of the contracts.
+
+#### Efficiency ####
+In addition to simplicity, the Account/Balance Model is more efficient, as each transaction only needs to validate that the sending account has enough balance to pay for the transaction.
 
 #### On-Chain vs Off-Chain transactions ####
 On-Chain      | Off-Chain
