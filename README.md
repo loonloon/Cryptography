@@ -215,7 +215,7 @@ Oracles are part of multi-signature contracts where for example the original tru
 
 ![oracle_01](https://user-images.githubusercontent.com/5309726/42750200-f1dd1e4a-8918-11e8-9a50-f87c1439bfe3.png)
 
-Getting data from an outside source onto the blockchain is a non-trivial problem, and one solution is to use ([Oraclize](http://www.oraclize.it)).
+Getting data from an outside source onto the blockchain is a non-trivial problem, and one solution is to use [Oraclize](http://www.oraclize.it).
 
 ![oracle_02](https://user-images.githubusercontent.com/5309726/42750251-21eb50ca-8919-11e8-91ad-1eb3326f7265.png)
 
