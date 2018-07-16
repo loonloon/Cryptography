@@ -213,6 +213,8 @@ Blockchains cannot access data outside their network. An oracle is a data feed â
 
 Oracles are part of multi-signature contracts where for example the original trustees sign a contract for future release of funds only if certain conditions are met. Before any funds get released an oracle has to sign the smart contract as well.
 
+With an oracle, we can give our smart contracts street smarts. Like a vending machine that only dispenses hot chocolate if the oracle says the temperature dropped below freezing. Or a flight insurance agency that gives instant payouts if the oracle says that the flight was delayed by more than 30 minutes. By including a connection to real world events, smart contracts get much smarter.
+
 ![oracle_01](https://user-images.githubusercontent.com/5309726/42750200-f1dd1e4a-8918-11e8-9a50-f87c1439bfe3.png)
 
 Getting data from an outside source onto the blockchain is a non-trivial problem, and one solution is to use [Oraclize](http://www.oraclize.it).
