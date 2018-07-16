@@ -204,6 +204,44 @@ Both Alice and Bob unlock their respective funds using their respective numbers.
 
 ![atomic swap](https://user-images.githubusercontent.com/5309726/42407533-22ded7b0-81f1-11e8-8e12-be582eb70688.jpg)
 
+#### Blockchain Oracle ####
+An oracle, in the context of blockchains and smart contracts, is an agent that finds and verifies real-world occurrences and submits this information to a blockchain to be used by smart contracts.
+
+Smart contracts contain value and only unlock that value if certain pre-defined conditions are met. When a particular value is reached, the smart contract changes its state and executes the programmatically predefined algorithms, automatically triggering an event on the blockchain. The primary task of oracles is to provide these values to the smart contract in a secure and trusted manner.
+
+Blockchains cannot access data outside their network. An oracle is a data feed – provided by third party service – designed for use in smart contracts on the blockchain. Oracles provide external data and trigger smart contract executions when pre-defined conditions meet. Such condition could be any data like weather temperature, successful payment, price fluctuations, etc.
+
+Oracles are part of multi-signature contracts where for example the original trustees sign a contract for future release of funds only if certain conditions are met. Before any funds get released an oracle has to sign the smart contract as well.
+
+![oracle_01](https://user-images.githubusercontent.com/5309726/42750200-f1dd1e4a-8918-11e8-9a50-f87c1439bfe3.png)
+
+Getting data from an outside source onto the blockchain is a non-trivial problem, and one solution is to use ([Oraclize](http://www.oraclize.it)).
+
+![oracle_02](https://user-images.githubusercontent.com/5309726/42750251-21eb50ca-8919-11e8-91ad-1eb3326f7265.png)
+
+#### Types of oracles ####
+There are different types of oracles based on the type of use. We differentiate between software oracles, hardware oracles, consensus oracles and inbound and outbound oracles.
+
+#### Software Oracles ####
+Software oracles handle information available online. An example could be the temperature, prices of commodities and goods, flight or train delays, etc. The data originates from online sources, like company websites. The software oracle extracts the needed information and pushes it into the smart contract.
+
+#### Hardware Oracles ####
+Some smart contracts need information directly from the physical world, for example, a car crossing a barrier where movement sensors must detect the vehicle and send the data to a smart contract. Another use case is RFID sensors in the supply chain industry. The biggest challenge for hardware oracles is the ability to report readings without sacrificing data security. Oracalize proposes a two-step solution to the risks, by providing cryptographic evidence of the sensor’s readings and anti-tampering mechanisms rendering the device inoperable in the case of a breach.
+
+#### Inbound Oracles ####
+These provide the smart contract with data from the external world. Example use case will be an automatic buy order if the USD hits a certain price.
+
+#### Outbound Oracles ####
+These provide smart contracts with the ability to send data to the outside world. An example would be a smart lock in the physical world which receives a payment on its blockchain address and needs to unlock automatically.
+
+#### Consensus Based Oracles ####
+Prediction markets like Augur and Gnosis rely heavily on oracles to confirm future outcomes. Using only one source of information could be risky and unreliable. To avoid market manipulation prediction markets implement a rating system for oracles. For further security, a combination of different oracles may be used, where for example 3 out of 5 oracles could determine the outcome of an event.
+
+#### Security Challenges ####
+Oracles are third party services which are not part of the blockchain consensus mechanism. The main challenge with oracles is that people need to trust these sources of information. Whether a website or a sensor, the source of information needs to be trustworthy. Different trusted computing techniques can be used as a way of solving these issues. 
+
+Companies like Oracalize, for example, have been leveraging Amazon with the TLSNotary-based proofs. Town Crier, another company, is focusing on the utilization of the Intel Software Guard Extensions (SGX). Providing smart contracts with trusted information sources is crucial for the users because in case of mistakes there are no rollbacks.
+
 #### InterPlanetary File System (IPFS) ####
 
 #### Token Types ####
