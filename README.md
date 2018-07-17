@@ -270,3 +270,83 @@ Bitcoin, Ether | Pre-paid user fee | Equity tokens, deriviatives, etc.
   * No banking activity.
   * No means of payment.
 * No AML provisions applicable in principle (except for shares of collective investment scheme and bearer shares)
+
+#### What is an Ethereum Request for Comments (ERC)? ####
+ERCs are technical documents used by smart contract developers at Ethereum. They define a set of rules required to implement tokens for the Ethereum ecosystem. These documents are usually created by developers, and they include information about protocol specifications and contract descriptions. Before becoming an standard, an ERC must be revised, commented and accepted by the community through an [Ethereum Improvement Proposal (EPI)](https://github.com/ethereum/EIPs/tree/master/EIPS). 
+
+Actually, an ERC is just a specific type of EIP. ERCs are application-level conventions and standards, and they may be of different types (token, registration name, URI schemes, library, packets, etc.)
+
+An EIP may exist in four different states: 
+1. Draft - opened for consideration, such as the ERC721 Non-fungible Token Standard.
+2. Accepted - planned for immediate adoption.
+3. Final - implemented EIP, as the ERC20 Token Standard.
+4. Deferred - the EIP is dismissed for now and may be considered in the future.
+
+#### Ethereum Token Standards ####
+
+#### ERC20 Token Standard ####
+It allows the implementation of a ***standard API to ensure the interoperability between tokens***. It offers basic functionalities to transfer tokens, obtain account balances, get the total supply of tokens, and allow token approvals. To define an ERC20 token you need:
+* The address of the contract
+* The number of tokens available.
+
+However, there are other optional values for additional information such as:
+* Name, for example "Minsait Token"
+* Symbol, such as "MNST"
+* Decimals, or how much you can divide the token. You can chose from 0 to 18 decimal values.
+
+ERC20 defines two types of events,`Transfer()`, triggered when tokens are transferred and `Approve()`, used for every successful call of the `approve()` method. This token may also include functions such as `allowance()`, `approve()`, and `transferFrom()`to offer advanced functionalities and authorize some other Ethereum address to utilise your tokens on your behalf. This other Ethereum address could be a smart contract designed to handle tokens or just another account.
+
+#### ERC223 Token Standard ####
+This token was created to solve the "lost tokens" problem from ERC20, where ***if a user mistakenly sends tokens to a smart contract not designed to handle them, the tokens get stuck or burned***. 
+
+In response to this, ERC223 allows developers to manage (accept or deny) arriving tokens. When tokens are transferred to a smart contract, a special function of this contract, `tokensFallback()`, allows the receiver of the tokens to reject them. If this function is not implemented, the transaction fails, and the emitter pays all the gas costs. In many cases we may use this function instead of `approve()`. This standard was implemented having backwards compatibility in mind.
+
+For example: If we perform a ERC20 token transfer to a contract not compatible with ERC20, tokens are not rejected and they are consequently lost/burned, while if we use ERC223, if the transaction is not compatible the transaction will be automatically rejected.
+
+The advantages of ERC223 over ERC20 are:
+* A single transaction is used instead of two, saving in gas costs.
+* Removes the problem of burned/lost tokens.
+* Allow developers manage incoming transactions.
+
+#### ERC621 Token Standard ####
+It is an extension to the ERC20 standard. ***It adds two functions to increase and decrease the total amount of tokens in circulation. In short, it proposes that totalSupply can be changed***. 
+
+ERC20 only allows a single token emission event defined by the contract owner during creation. With ERC621 a new totalSupply can be defined through the functions `increaseSupply()` `anddecreaseSupply()`. It is recommended that these functions are only accessed by the contract owners or trusted users. 
+
+To enhance ERC621's functionality and security, and to avoid potential errors, additional functions for overflow checks, contract property modifications and restricted privileges, should be implemented.
+
+#### ERC667 Token Standard ####
+It aims to merge ERC20 and ERC223 in a single standard. The idea behind it is to introduce a `transferAndCall()` function to the ERC20 standard ensuring backward compatibility with ERC20 tokens. ERC667 transfers tokens through ERC20's `transfer()` function, and triggers and event. When the transaction is completed and the event is registered, the token calls `transferAndCall()` in the receiver using the emitter, the approved amount, and an additional parameter.
+
+For example: If Sam wants to transfer 20 tokens to Tom, the emitter calls the `transferAndCall(tom, 20, data)` of the ERC667 token. Internally, the contract calls `transfer(tom, 20)` from ERC20’s standard. When the transfer is completed, apart from triggering the `Transfer()` event, the function `tokenFallback(sam, 20, data`) is sent to the receiver of the transferred amount. The data field is used to send additional information about the transfer such as the purpose of the transaction.
+
+#### ERC721 Non-Fungible Token Standard ####
+***ERC721 describes a non-fungible token (NFT)***  and is an asset that can’t be consumed while you are making use of it. Right now ERC721 is in a draft state, however, people are already using it. Each ERC721 token is unique, they are all different and they may even have different values according to their owner. They may represent ownership over physical or digital assets, such as houses, art masterpieces, loans and, why not? Kitties.
+
+Each NFT is identified through an `uint256` ID. They may be transferred through two different funcions:
+
+* A ***safe transfer*** function `safeTansferFrom()` which verifies that the msg.sender,i.e. the user that triggered the function, is the owner of the token or an authorized user allowed to transfer the token.
+
+* A ***non-secure trasfer*** `transferFrom()`, where there is no preliminary authorization verification. The token developer is responsible for implementing a piece of code in this function that verifies that the responsible for calling the function is authorized to do so. In this function, the user calling it must also verify that the receiver is entitle for receiving the token. If these verifications are not performed, the tokens could be lost forever.
+
+ERC721 tokens must implement the proposed ERC165 interface. This standard allows the detection of the interfaces implemented by a contract. This is really useful, as it allows to detect the interface that a token implements and, consequently, adapt the method/code to interact with it.
+
+#### ERC777 A New Advanced Token Standard ####
+It defines all the functions required to send tokens on behalf of another address, contract or regular account. For this purpose, it uses the ERC820 standard. The use of ER820 enables the registration of metadata in smart contracts in order to allow backwards compatibility with previous versions of token implementations. ERC777 includes functions for authorization, revocation, transfer and checks.
+
+* `authorizeOperator(address operator)` authorizes a third-party to send tokens on behalf of the owner of the token, i.e.msg.sender. If this function is successful, an `AuthorizedOperator(address operator, address tokenHolder)` event is sent, where tokenHolder is the address of the user maintaining and managing the tokens.
+
+* `revokeOperator(address operator)` removes the token transfer authorization from a third-party. Thus, the operator won’t be able to transfer tokens on behalf of its owner anymore.
+
+* `isOperatorFor(address operator, address tokenHolder)` checks if the address of the operator is allowed for the transfer of tokens retained by tokenHolder.
+
+* `operatorSend(address from, address to, uint256 amount, bytes userData, bytes operatorData)` sends an amount of tokens from one address to another one. If the transaction is successful a `Sent()` event is triggered.
+
+#### ERC827 Token Standard (ERC20 extension) ####
+ERC827 is a standard that rivals ERC223. It can be used to solve the same problems solved by ERC223 but with higher flexibility, allowing the transmission of data along with the transfer of tokens. Lately, this standard has been gaining popularity against ERC223. It allows the transfer and approval of tokens to be consumed by third-parties. It is completely compatible with ERC20, adding three new functions.
+
+* `transfer(to, value, data)` which transfers an amount of tokens to the destination address. It triggers `Transfer()` when it finishes. We may see how it includes a data field for additional information.
+
+* `transferFrom(from, to, value, data)` transfers an amount of tokens from an specific address to a destination address. Again, it triggers `Transfer()` after the call.
+
+* `approve(spender, value, data)` allows a _spender to withdraw from an account the amount in value .
