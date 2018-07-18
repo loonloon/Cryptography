@@ -41,11 +41,47 @@ All of the participants on the distributed ledger can view all of the records in
 ![dlt_01](https://user-images.githubusercontent.com/5309726/42856583-6d0bae50-8a78-11e8-8ed5-0ed228b78004.jpg)
 
 #### Blockchain ####
-On paper, the entire description of a distributed ledger sounds exactly like what most people think of when they envision a blockchain. However, the blockchain is just one particular type of distributed ledger. Most people know it as the technology powering bitcoin, Ethereum, and other popular cryptocurrencies. The name blockchain also refers to how “blocks” are added to the chain, which contains transaction records.
+On paper, the entire description of a distributed ledger sounds exactly like what most people think of when they envision a blockchain. However, the blockchain is just one particular type of distributed ledger. Most people know it as the technology powering bitcoin, Ethereum, and other popular cryptocurrencies. The name blockchain also refers to how "blocks" are added to the chain, which contains transaction records.
 
 To make the chaining of blocks possible, the blockchain uses a cryptographic signature, known as a hash. In this sense, it is certainly possible to use a blockchain as a ledger, which can be shared with anyone and everyone. In the case of cryptocurrencies, this can be achieved by the other parties looking up blockchain information in real-time and even without installing specific software to do so.
 
 What makes blockchains so intriguing is how they are so much more than just a simple data structure. It is possible to use a blockchain to determine rules for a transaction or even to create a smart contract. Moreover, a blockchain is a sequence of blocks, but distributed ledgers do not require such a chain. Furthermore, distributed ledgers do not require proof of work and offer – theoretically – better scaling options. Some implementations are capable of combining both a distributed ledger and blockchain, albeit this does not necessarily apply to every project focusing on either of these technologies.
+
+#### What is Node, Full Node and etc? ####
+Each computer that joins a bitcoin network is called a node of the network. To keep it simple, all miners are full nodes, but not all full nodes are miners. Miners need to be running full nodes to access the blockchain. Anyone who runs a full node need not mine for blocks.
+
+#### Full Node ####
+A few computers on the blockchain are the special ones which download every single block and the transactions presented to it, and verify them against the core consensus rules of the blockchain network. Such computers are called full nodes. Core consensus rules cannot be changed, unless done through a hard fork which results in a new blockchain with a new identity. For example, some of Bitcoin’s consensus rules include:
+* A transaction output cannot be double-spent.
+* Transactions and blocks must be in the correct format.
+* Blocks may only release a certain number of bitcoins as a block reward.
+
+A lightweight node may mistakenly assume the validity of a transaction or a block, but the full nodes will reject it absolutely.
+
+Essentially, full nodes form the backbone of the virtual currency network, as these are the major contributors that maintain the sanctity and trustless nature of the globally distributed blockchain network.
+
+![node](https://user-images.githubusercontent.com/5309726/42863374-7ff64d46-8a95-11e8-809d-4f170ade269e.png)
+
+#### Lightweight Node ####
+The majority of such nodes join a blockchain network to perform the basic activities - like validating the authenticity of the ongoing transactions on the network. Such nodes do not download the full blockchain, but they download only the block headers which are sufficient to authenticate the transactions (simplified payment verification (SPV)). Such nodes are called lightweight nodes.
+
+Lightweight nodes are supported by full nodes, which download the entire blockchain and verify them against the core consensus rules of the blockchain network. While lightweight nodes may assume a faulty transaction to be valid due to their limited scope, the full nodes supersede them and confirm the correction.
+
+#### Pruning Node (Full Node in Pruning mode) ####
+In the bitcoin network, not everyone is capable of running a full network node at all times. The device running the node needs to be connected to the internet at all times and come with a lot of storage space. However, there is an alternative solution available in the form of a pruning node, which reduces storage requirements by quite a margin. This allows users to set up a pruning node on a cheaper device, such as a Raspberry Pi for example.
+
+Moreover, a pruning node reduces the number of transactions that need to be stored. Rather than storing entire network blocks full of data, the pruning node stores the final link of every transaction. Moreover, they can still validate bitcoin transactions and relay them to the rest of the network. It is quite a cost-effective solution for people who want to support the bitcoin network but can’t run a full node at all times. The wallet linked to the pruned node does not need to contain any BTC to provide this service.
+
+#### Master Node ####
+Master nodes are full nodes that incentivize node operators to perform the core consensus functions of running a blockchain.
+
+The increasing cost and technical complexities involved in running a full node computer on a blockchain network often leads to a decline in the number of full nodes, as it's not very profitable.
+
+Mining pools usually take up most of the resources through their mining activities. This reduction in full nodes impacts the efficient working of a blockchain, as it may lead to longer transaction processing times and network congestion.
+
+Master nodes attempt to solve the problem by acting as full nodes, and their operators are financially rewarded, similar to miners in a proof-of-work system. They operate on a collateral-based system to ensure that they provide genuine services as a backbone to the blockchain network, and hence are also known as "bonded validator systems." Everyone who runs a masternode, will need to lock a specific amount of coins in a wallet address used to operate the masternode in question. Once said funds are removed, the user is no longer eligible to receive incentives generated by providing masternode services to the ecosystem.
+
+Dash, a fork of Bitcoin, was the first virtual currency to adopt the master node model.
 
 #### Permissioned vs Permissionless Blockchain ####
 #### Permissioned ####
