@@ -29,6 +29,24 @@ The output is 64 characters, but if you view it like this:
 
 32 separate hexadecimal numbers (or 32 bytes) each paired in parenthesis representing 8 bits in the hash.
 
+#### Distributed Ledger Technology ####
+![dlt](https://user-images.githubusercontent.com/5309726/42856577-6379cdae-8a78-11e8-8a2d-47035dc4fedd.jpeg)
+
+A distributed ledger is a type of database spread across multiple sites, regions, or participants. As one would expect, a distributed ledger has to be decentralized, otherwise it would resemble a centralized database like most companies use today. Removing the intermediary party from the equation is what makes the concept of distributed ledger technology so appealing.
+
+Moreover, enterprises use distributed ledger technology to process, validate or authenticate transactions or other types of data exchanges. Records are stored in the ledger once consensus is achieved by the majority of parties. Every record stored in the distributed ledger is timestamped and has its very own cryptographic signature.
+
+All of the participants on the distributed ledger can view all of the records in question. The technology provides a verifiable and auditable history of all information stored on that particular dataset. Distributed ledger technology will often to be referred to as DLT in financial and government circles.
+
+![dlt_01](https://user-images.githubusercontent.com/5309726/42856583-6d0bae50-8a78-11e8-8ed5-0ed228b78004.jpg)
+
+#### Blockchain ####
+On paper, the entire description of a distributed ledger sounds exactly like what most people think of when they envision a blockchain. However, the blockchain is just one particular type of distributed ledger. Most people know it as the technology powering bitcoin, Ethereum, and other popular cryptocurrencies. The name blockchain also refers to how “blocks” are added to the chain, which contains transaction records.
+
+To make the chaining of blocks possible, the blockchain uses a cryptographic signature, known as a hash. In this sense, it is certainly possible to use a blockchain as a ledger, which can be shared with anyone and everyone. In the case of cryptocurrencies, this can be achieved by the other parties looking up blockchain information in real-time and even without installing specific software to do so.
+
+What makes blockchains so intriguing is how they are so much more than just a simple data structure. It is possible to use a blockchain to determine rules for a transaction or even to create a smart contract. Moreover, a blockchain is a sequence of blocks, but distributed ledgers do not require such a chain. Furthermore, distributed ledgers do not require proof of work and offer – theoretically – better scaling options. Some implementations are capable of combining both a distributed ledger and blockchain, albeit this does not necessarily apply to every project focusing on either of these technologies.
+
 #### Permissioned vs Permissionless Blockchain ####
 #### Permissioned ####
 Sometimes referred to as “private” blockchains, you are required to have some sort of permission to access any or parts of that blockchain. There are a multitude of variants and hybrid permissioned/permissionless blockchains that exist. For example a blockchain may be public to read the information but require permission to access or transact on their network.
