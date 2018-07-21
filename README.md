@@ -98,7 +98,10 @@ There is no barrier to entry to use it. Anyone can run a node, run mining softwa
 A consensus mechanism is a fault-tolerant mechanism that is used in computer and blockchain systems to achieve the necessary agreement on a single data value or a single state of the network among distributed processes or multi-agent systems. There are different kinds of consensus mechanism algorithms which work on different principles.
 
 #### Proof of Work (POW) ####
+A common consensus algorithm used by the most popular cryptocurrency networks like Bitcoin and Litecoin. It requires a participant node to prove that the work done and submitted by them qualifies them to receive the right to add new transactions to the blockchain. However, this whole mining mechanism of Bitcoin needs high energy consumption and longer processing time.
 
+#### Proof of Stake (POS) ####
+The proof of stake (POS) is another common consensus algorithm that evolved as a low-cost, low-energy consuming alternative to POW algorithm. It involves allocation of responsibility in maintaining the public ledger to a participant node in proportion to the number of virtual currency tokens held by it. However, this comes with a drawback that it promotes cryptocoin saving, instead of spending. 
 
 #### Unspent Transaction Output (UTXO)and Account/Balance Model ####
 Two types of record-keeping models are popular in today’s blockchain networks:
