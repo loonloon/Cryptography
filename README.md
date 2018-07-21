@@ -94,6 +94,12 @@ Other permissioned blockchains may be totally in house (highly permissioned), un
 #### Permissionless ####
 There is no barrier to entry to use it. Anyone can run a node, run mining software/hardware, access a wallet and write data onto and transact within the blockchain (as long as they follow the rules of the bitcoin blockchain). There is no way to censor anyone, ever, on the permissionless bitcoin blockchain.
 
+#### Consensus Mechanism ####
+A consensus mechanism is a fault-tolerant mechanism that is used in computer and blockchain systems to achieve the necessary agreement on a single data value or a single state of the network among distributed processes or multi-agent systems. There are different kinds of consensus mechanism algorithms which work on different principles.
+
+#### Proof of Work (POW) ####
+
+
 #### Unspent Transaction Output (UTXO)and Account/Balance Model ####
 Two types of record-keeping models are popular in today’s blockchain networks:
 
