@@ -1,0 +1,109 @@
+#pragma once
+
+/*
+Copyright 2016, Intel Corporation.
+
+The source code, information and material("Material") contained herein is
+owned by Intel Corporation or its suppliers or licensors, and title to 
+such Material remains with Intel Corporation or its suppliers or licensors.
+The Material contains proprietary information of Intel or its suppliers and 
+licensors. The Material is protected by worldwide copyright laws and treaty
+provisions.No part of the Material may be used, copied, reproduced, 
+modified, published, uploaded, posted, transmitted, distributed or 
+disclosed in any way without Intel's prior express written permission. No
+license under any patent, copyright or other intellectual property rights
+in the Material is granted to or conferred upon you, either expressly, by
+implication, inducement, estoppel or otherwise. Any license under such 
+intellectual property rights must be express and approved by Intel in
+writing.
+
+Unless otherwise agreed by Intel in writing, you may not remove or alter 
+this notice or any other notice embedded in Materials by Intel or Intel's 
+suppliers or licensors in any way.
+*/
+
+#include "common.h"
+#include "dllexport.h"
+//----------------------------------------------------------
+// This seems to be the standard solution for preventing
+// spurious "macro redefinition" warnings when you have
+// to include both windows.h and ntstatus.h
+#define WIN32_NO_STATUS
+#include <windows.h>
+#undef WIN32_NO_STATUS
+#include <ntstatus.h>
+//----------------------------------------------------------
+#include <bcrypt.h>
+
+#include "DRNG.h"
+
+#define CRYPTO_KDF_ITERATIONS	5000
+#define CRYPTO_KDF_SALT_LEN	8
+
+#define CRYPTO_OK						0x00000000
+#define CRYPTO_ERR_OPEN_PROVIDER		0x10000001
+#define CRYPTO_ERR_CREATE_HASH			0x10000002
+#define CRYPTO_ERR_HASH_DATA			0x10000003
+#define CRYPTO_ERR_FINISH_HASH			0x10000004
+#define CRYPTO_ERR_SET_PROP				0x10000005
+#define CRYPTO_ERR_GET_PROP				0x10000006
+#define CRYPTO_ERR_SET_KEY				0x10000007
+
+#define CRYPTO_ERR_DECRYPT				0x10000010
+#define CRYPTO_ERR_DECRYPT_AUTH			0x10000011
+#define CRYPTO_ERR_ENCRYPT				0x10000012
+
+#define CRYPTO_ERR_PASS_MISMATCH		0x10000100
+#define CRYPTO_ERR_USER_CANCEL			0x10000101
+
+#define CRYPTO_ERR_INVALID				0x10000200
+
+#define CRYPTO_ERR_DRNG					0x20000001
+
+#define CRYPTO_ERR_UNKNOWN				0xF0000001
+
+#define CRYPTO_F_IV_PROVIDED			0x00000001
+
+typedef int (*GenerateDatabaseKeyCallback)(int, int);
+typedef ULONG crypto_status_t;
+
+class PASSWORDMANAGERCORE_API Crypto
+{
+	DRNG drng;
+
+	crypto_status_t aes_init (BCRYPT_ALG_HANDLE *halgo, LPCWSTR algo_id, PBYTE chaining_mode, DWORD chaining_mode_len, BCRYPT_KEY_HANDLE *hkey, PBYTE key, ULONG key_len);
+	void aes_close (BCRYPT_ALG_HANDLE *halgo, BCRYPT_KEY_HANDLE *hkey);
+		
+	crypto_status_t aes_128_gcm_encrypt(PBYTE key, PBYTE nonce, ULONG nonce_len, PBYTE pt, DWORD pt_len, PBYTE ct, DWORD ct_sz, PBYTE tag, DWORD tag_len);
+	crypto_status_t aes_128_gcm_decrypt(PBYTE key, PBYTE nonce, ULONG nonce_len, PBYTE ct, DWORD ct_len, PBYTE pt, DWORD pt_sz, PBYTE tag, DWORD tag_len);
+	crypto_status_t sha256_multi (PBYTE *messages, ULONG *lengths, BYTE hash[32]);
+
+public:
+	Crypto(void);
+	~Crypto(void);
+
+	crypto_status_t generate_database_key (BYTE key_out[16], GenerateDatabaseKeyCallback callback);
+	crypto_status_t generate_salt (BYTE salt[8]);
+	crypto_status_t generate_salt_ex (PBYTE salt, ULONG salt_len);
+	crypto_status_t generate_nonce_gcm (BYTE nonce[12]);
+
+	crypto_status_t unlock_vault(PBYTE passphrase, ULONG passphrase_len, BYTE salt[8], BYTE db_key_ct[16], BYTE db_key_iv[12], BYTE db_key_tag[16], BYTE db_key_pt[16]);
+
+	crypto_status_t derive_master_key (PBYTE passphrase, ULONG passphrase_len, BYTE salt[8], BYTE mkey[16]);
+	crypto_status_t derive_master_key_ex (PBYTE passphrase, ULONG passphrase_len, PBYTE salt, ULONG salt_len, ULONG iterations, BYTE mkey[16]);
+
+	crypto_status_t validate_passphrase(PBYTE passphrase, ULONG passphrase_len, BYTE salt[8], BYTE db_key[16], BYTE db_iv[12], BYTE db_tag[16]);
+	crypto_status_t validate_passphrase_ex(PBYTE passphrase, ULONG passphrase_len, PBYTE salt, ULONG salt_len, ULONG iterations, BYTE db_key[16], BYTE db_iv[12], BYTE db_tag[16]);
+
+	crypto_status_t encrypt_database_key (BYTE master_key[16], BYTE db_key_pt[16], BYTE db_key_ct[16], BYTE iv[12], BYTE tag[16], DWORD flags= 0);
+	crypto_status_t decrypt_database_key (BYTE master_key[16], BYTE db_key_ct[16], BYTE iv[12], BYTE tag[16], BYTE db_key_pt[16]);
+
+	crypto_status_t encrypt_account_password (BYTE db_key[16], PBYTE password_pt, ULONG password_len, PBYTE password_ct, BYTE iv[12], BYTE tag[16], DWORD flags= 0);
+	crypto_status_t decrypt_account_password (BYTE db_key[16], PBYTE password_ct, ULONG password_len, BYTE iv[12], BYTE tag[16], PBYTE password);
+
+	crypto_status_t encrypt_database (BYTE db_key[16], PBYTE db_serialized, ULONG db_size, PBYTE db_ct, BYTE iv[12], BYTE tag[16], DWORD flags= 0);
+	crypto_status_t decrypt_database (BYTE db_key[16], PBYTE db_ct, ULONG db_size, BYTE iv[12], BYTE tag[16], PBYTE db_serialized);
+
+	crypto_status_t generate_password(PBYTE buffer, USHORT buffer_len, USHORT flags);
+};
+

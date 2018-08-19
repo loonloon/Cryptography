@@ -1,0 +1,112 @@
+﻿<Window x:Class="Password_manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Password_manager"
+        mc:Ignorable="d"
+        Title="Password Manager" Height="700" Width="800" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" MinWidth="600" MinHeight="700" SourceInitialized="Window_SourceInitialized" Closing="Window_Closing">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="178"/>
+            <RowDefinition Height="Auto" MinHeight="358"/>
+            <RowDefinition Height="Auto" MinHeight="74"/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10,10,0,31"  Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Height="18" >
+            <Menu IsMainMenu="True">
+                <MenuItem Header="_File">
+                    <MenuItem x:Name="Exit" Header="_Exit" HorizontalAlignment="Left" Width="Auto" Click="Exit_Click"  />
+                </MenuItem>
+                <MenuItem Header="_Vault">
+                    <MenuItem x:Name="mnNew" Header="New Vault" Click="mnNew_Click"  />
+                    <MenuItem x:Name="mnOpen" Header="_Open Vault" Click="mnOpen_Click"   />
+                    <MenuItem x:Name="mnCopyto" Header="_Copy Password to Clipboard" IsEnabled="False" Click="mnCopyto_Click"   />
+                    <MenuItem x:Name="mnChangePassword" Header="Change Master Password" IsEnabled="False" Click="ChangePassword_Click" />
+                    <MenuItem x:Name="mnLock" Header="_Lock" IsEnabled="False" Click="Lock_Click_1" />
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem x:Name="mnOptions" Header="Options" Click="mnOptions_Click"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Name="password" Header="Password Manager"  Margin="5">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Button Name="btnOpenVault" Width="150" Height="50" Content="Open Password Vault" Click="btnOpenVault_Click"  Margin="10"/>
+                    <Button Name="btnCreateVault" Width="150" Height="50" Content="Create New Vault" Click="btnCreateVault_Click"  Margin="10"/>
+                </StackPanel>
+                <StackPanel Name ="pmangerPanel" Margin="20" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Visibility="Hidden">
+                    <TextBlock Name="_txtBlock" Margin="5" Text="Enter your master password to unlock your vault" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <PasswordBox Name="txtpasswordbox"  Margin="5" Width="250" Height="25" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <Button Name="btnUnlock" Width="75" Height="25" Content="Unlock" Click="unlock_Click"   Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Name="Details" Header="Password Vault"  Margin="1">
+            <StackPanel Orientation="Vertical" Margin="5,9,5,5">
+                <ListBox Name="lbPasswordList" Height="140" HorizontalContentAlignment="Stretch" SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged" Margin="0,0,0.2,0" Background="{DynamicResource {x:Static SystemColors.ControlColor}}">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="2">
+                                <TextBlock Text="{Binding DisplayName, Mode=OneWay}"  VerticalAlignment="Center" Margin="5" />
+                                <!--<TextBlock Text="URL:" Margin="5" />
+                                <TextBlock Text="{Binding URLstring, Mode=TwoWay}"  VerticalAlignment="Center" Margin="1" />
+                                <TextBlock Text="Login:" Margin="5" />
+                                <TextBlock Text="{Binding Login, Mode=TwoWay}"  VerticalAlignment="Center" Margin="1" />
+                                <TextBlock Text="Password:" Margin="5" />
+                                <TextBlock Text="{Binding Password,Mode=TwoWay}"  VerticalAlignment="Center" Margin="1" />-->
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Margin="5" Text="Account Name:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0"/>
+                    <TextBox  Margin="5" Name="txtAccount"  Grid.Row="0" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Bottom" Width="300" Grid.Column="1" />
+
+                    <TextBlock Margin="5" Text="URL:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" />
+                    <TextBox  Margin="5" Name="txtURL" Grid.Row="1" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Bottom" Width="300" Grid.Column="1" />
+
+                    <TextBlock Margin="5" Text="Login / Username:" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="0" />
+                    <TextBox  Margin="5" Name="txtLogin" Grid.Row="2" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Bottom" Width="300" Grid.Column="1" />
+
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5">
+                        <Button Name="btnEditAccount" Width="100" Height="40" Content="Edit Account" Click="btnEditAccount_Click" IsEnabled="False"  Margin="10" />
+                        <Button Name="btnViewPassword" Width="100" Height="40" Content="View Password" Click="btnViewPassword_Click" IsEnabled="False"  Margin="10"/>
+                        <Button Name="btnCopyPassword" Width="100" Height="40" Content="Copy Password" Click="btnCopyPassword_Click" IsEnabled="False"  Margin="10" />
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </GroupBox>
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnlock" Width="150" Height="30" Content="Lock Vault" Click="btnlock_Click"  IsEnabled="False"   Margin="5" />
+        </StackPanel>
+
+
+
+
+    </Grid>
+</Window>

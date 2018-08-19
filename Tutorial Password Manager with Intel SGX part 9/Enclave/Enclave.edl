@@ -1,0 +1,80 @@
+/*
+Copyright 2016, Intel Corporation.
+
+The source code, information and material("Material") contained herein is
+owned by Intel Corporation or its suppliers or licensors, and title to
+such Material remains with Intel Corporation or its suppliers or licensors.
+The Material contains proprietary information of Intel or its suppliers and
+licensors. The Material is protected by worldwide copyright laws and treaty
+provisions.No part of the Material may be used, copied, reproduced,
+modified, published, uploaded, posted, transmitted, distributed or
+disclosed in any way without Intel's prior express written permission. No
+license under any patent, copyright or other intellectual property rights
+in the Material is granted to or conferred upon you, either expressly, by
+implication, inducement, estoppel or otherwise. Any license under such
+intellectual property rights must be express and approved by Intel in
+writing.
+
+Unless otherwise agreed by Intel in writing, you may not remove or alter
+this notice or any other notice embedded in Materials by Intel or Intel's
+suppliers or licensors in any way.
+*/
+
+enclave {
+
+	/* Needed for the call to sgx_cpuidex */
+	from "sgx_tstdc.edl" import *;
+
+    trusted {
+        /* define ECALLs here. */
+
+		public int ve_initialize ();
+		public int ve_initialize_from_header ([in, count=len] unsigned char *header, uint16_t len);
+
+		public int ve_load_vault ([user_check] unsigned char *edata);
+
+		public int ve_get_header_size ([out] uint16_t *sz);
+		public int ve_get_header ([out, count=len] unsigned char *header, uint16_t len);
+
+		public int ve_get_vault ([user_check] unsigned char *edata, uint32_t len);
+		public uint32_t ve_get_db_size ();
+
+		public void ve_lock ();
+		public int ve_unlock ([in, string] char *password);
+
+		public int ve_set_master_password ([in, string] char *password);
+		public int ve_change_master_password ([in, string] char *oldpass, [in, string] char *newpass);
+
+		public int ve_accounts_get_count ([out] uint32_t *count);
+		public int ve_accounts_get_info_sizes (uint32_t idx, [out] uint16_t *mbname_sz, [out] uint16_t *mblogin_sz, [out] uint16_t *mburl_sz);
+		public int ve_accounts_get_info (uint32_t idx, 
+			[out, count=mbname_sz] char *mbname, uint16_t mbname_sz, 
+			[out, count=mblogin_sz] char *mblogin, uint16_t mblogin_sz,
+			[out, count=mburl_sz] char *mburl, uint16_t mburl_sz
+		);
+		
+		public int ve_accounts_get_password_size (uint32_t idx, [out] uint16_t *mbpass_sz);
+		public int ve_accounts_get_password (uint32_t idx, [out, count=mbpass_sz] char *mbpass, uint16_t mbpass_sz);
+
+		public int ve_accounts_set_info(uint32_t idx, 
+			[in, string] char *mbname, uint16_t mbname_len, 
+			[in, string] char *mblogin, uint16_t mblogin_len,
+			[in, string] char *mburl, uint16_t mburl_len
+		);
+		public int ve_accounts_set_password(uint32_t idx, [in, string] char *mbpass, uint16_t mbpass_len);
+
+		public int ve_accounts_generate_password(uint16_t length, uint16_t flags, [out, count=length] char *cpass);
+
+		public int ve_is_valid();
+		public int ve_is_locked();
+
+		public uint32_t ve_get_state_size();
+		public int ve_heartbeat([out, count=sz] char *state, uint32_t sz);
+		public void ve_set_lock_delay(uint16_t mins);
+		public int ve_restore_state([in, out, count=sz] char *state, uint32_t sz);
+	};
+
+    untrusted {
+		[cdecl] void ve_o_process_info([out] uint64_t *timestamp, [out] uint64_t *pid);
+    };
+};

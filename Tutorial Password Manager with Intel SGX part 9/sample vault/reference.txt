@@ -1,0 +1,22 @@
+The reference vault file is reference.vlt in this directory. It has
+these properties:
+
+master key
+
+	ca ab 23 30 eb a7 db 71 eb ed 10 91 7f 78 88 c2
+	
+vault/db key
+
+	9b 34 4f fb bb d5 4d 52 23 b6 03 f0 aa da 9b 7a
+
+Master passphrase
+
+	An enticing aroma of fruit flavors accented by licorice.
+	
+Passwords for the 3 accounts
+
+	addition pack solar ring
+	GLV2TE@#P+FvMC?B9wYBz5rj
+	O1d-Tongue 0pportunity-ball
+	
+(note that the first and last include spaces)
